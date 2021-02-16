@@ -16,10 +16,6 @@ COPY Gemfile /okr-intern-v2/Gemfile
 COPY Gemfile.lock /okr-intern-v2/Gemfile.lock
 RUN bundle install
 
-COPY package.json /okr-intern-v2/package.json
-COPY yarn.lock /okr-intern-v2/yarn.lock
-RUN yarn install
-
 COPY . /okr-intern-v2
 
 COPY entrypoint.sh /usr/bin/
