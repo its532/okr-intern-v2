@@ -5,6 +5,6 @@
 <% end %>
 <% if user_signed_in? %>
 <%= current_user.email %>
-<p><%= current_user.image %></p>
+<p><%= current_user.name %></p>
 <img src=<%= current_user.image %> class = "icon_image">
 <% end %>
