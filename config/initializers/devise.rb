@@ -38,9 +38,7 @@ Devise.setup do |config|
   # available as additional gems.
   require 'devise/orm/active_record'
 
-  config.omniauth :google_oauth2,
-                  ENV['GOOGLE_APP_ID'],
-                  ENV['GOOGLE_APP_SECRET']
+  config.omniauth :google_oauth2,ENV['GOOGLE_APP_ID'],ENV['GOOGLE_APP_SECRET'],scope: 'email',redirect_uri: "http://localhost:3001/users/auth/google_oauth2/callback"
 
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
