@@ -1,0 +1,23 @@
+<nav>
+  <div>
+    <div>
+      <div>
+        <%= link_to 'OKR Intern', root_path %>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <% if user_signed_in? %>
+          <%= link_to 'ユーザー情報', root_path %>
+          <%= link_to 'セクションOKR', section_okrs_path, class: "my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0" %>
+          <%= link_to 'プロフィール変更', edit_user_registration_path %>
+          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+        <% else %>
+          <%= link_to 'サインアップ', new_user_registration_path, class: "my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0" %>
+          <%= link_to 'ログイン', new_user_session_path, class: "my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</nav>
