@@ -27,6 +27,7 @@ gem "devise", git: "https://github.com/heartcombo/devise"
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
 gem 'carrierwave'
+gem 'fog'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
