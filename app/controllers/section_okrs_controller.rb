@@ -1,0 +1,2 @@
+class SectionOkrsController < ApplicationController
+end
