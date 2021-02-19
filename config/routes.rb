@@ -6,5 +6,6 @@ Rails.application.routes.draw do
 
   root 'toppages#index'
 
+  resources :sections
   resources :section_okrs
 end
