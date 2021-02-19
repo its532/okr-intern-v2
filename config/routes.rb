@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
-  root 'toppages#index'
   devise_for :users, controllers: {
     omniauth_callbacks: "users/omniauth_callbacks",
     registrations: "users/registrations"
   }
+
+  root 'toppages#index'
+
+  resources :section_okrs
 end

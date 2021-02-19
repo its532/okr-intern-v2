@@ -1,0 +1,12 @@
+<% provide(:title, 'Section OKR') %>
+
+<div>
+  <div class="flex">
+    <%= link_to '新規登録', new_section_okr_path %>
+  </div>
+
+    <% @section_okrs.each do |section_okr| %>
+          <span class="font-semibold"><%= section_okr.section %></span>
+          <span class="font-semibold"><%= section_okr.objective %></span>
+    <% end %>
+</div>
