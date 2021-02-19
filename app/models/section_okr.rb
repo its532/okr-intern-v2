@@ -1,0 +1,2 @@
+class SectionOkr < ApplicationRecord
+end
