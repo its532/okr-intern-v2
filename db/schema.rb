@@ -13,7 +13,6 @@
 ActiveRecord::Schema.define(version: 2021_02_20_152302) do
 
   create_table "personal_okrs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.string "section", null: false
     t.text "objective"
     t.text "objective_reason"
     t.string "quarter", default: "", null: false
