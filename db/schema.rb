@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_19_193540) do
+ActiveRecord::Schema.define(version: 2021_02_20_152302) do
+
+  create_table "personal_okrs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "section", null: false
+    t.text "objective"
+    t.text "objective_reason"
+    t.string "quarter", default: "", null: false
+    t.bigint "user_id"
+    t.bigint "section_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["section_id"], name: "index_personal_okrs_on_section_id"
+    t.index ["user_id"], name: "index_personal_okrs_on_user_id"
+  end
 
   create_table "section_okrs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.text "objective"
