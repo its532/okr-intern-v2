@@ -1,0 +1,2 @@
+class PersonalOkrsController < ApplicationController
+end
