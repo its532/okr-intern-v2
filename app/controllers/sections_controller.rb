@@ -1,5 +1,5 @@
 class SectionsController < ApplicationController
-  # before_action :sign_in_required
+  before_action :sign_in_required
 
   def new
     @section = Section.new

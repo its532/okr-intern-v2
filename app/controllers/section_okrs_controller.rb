@@ -1,5 +1,5 @@
 class SectionOkrsController < ApplicationController
-  # before_action :sign_in_required
+  before_action :sign_in_required
   # before_action :set_section_okr, only: %i[edit update destroy]
 
   def new
