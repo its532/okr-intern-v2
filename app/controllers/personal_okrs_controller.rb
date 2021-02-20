@@ -11,6 +11,17 @@ class PersonalOkrsController < ApplicationController
     @personal_okrs = PersonalOkr.all
   end
 
+  def create
+    @personal_okr = PersonalOkr.new(personal_okr_params)
+    @personal_okr.user_id = current_user.id
+    if @personal_okr.save
+      flash[:notice] = "OKRを登録しました"
+      redirect_to personal_okrs_path(quarter: @personal_okr.quarter)
+    else
+      flash[:alert] = ErrorFormatter.format(@personal_okr)
+      render 'new'
+    end
+  end
 
   private
 

@@ -1,0 +1,25 @@
+<div class="">
+  <div class="">
+    <%= f.label :quarter, "Quarter" %>
+    <%= f.select :quarter, [['20/Q1'], ['20/Q2'], ['20/Q3'], ['20/Q4'], ['21/Q1']], { selected: f.object.quarter }, class: "", required: true %>
+  </div>
+
+  <div class="flex flex-col mt-4">
+    <%= f.label :section_id %>
+    <%= f.select :section_id, Section.all.map{|section| [section.name, section.id]}, { selected: f.object.section_id }, class: 'form-control', required: true %>
+  </div>
+
+  <div class="flex flex-col mt-4">
+    <%= f.label :Objective %>
+    <%= f.text_field :objective, class: "" %>
+  </div>
+
+  <div class="flex flex-col mt-4">
+    <%= f.label :Objective_reason %>
+    <%= f.text_field :objective_reason, class: "" %>
+  </div>
+
+  <div class="flex flex-col mt-8">
+    <%= f.submit "登録", class: "" %>
+  </div>
+</div>
