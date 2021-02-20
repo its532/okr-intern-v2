@@ -1,0 +1,12 @@
+<% provide(:title, 'Personal OKR') %>
+
+<div>
+  <div class="flex">
+    <%= link_to '新規登録', new_personal_okr_path %>
+  </div>
+
+    <% @personal_okrs.each do |personal_okr| %>
+          <span class="font-semibold"><%= personal_okr.section %></span>
+          <span class="font-semibold"><%= personal_okr.objective %></span>
+    <% end %>
+</div>
