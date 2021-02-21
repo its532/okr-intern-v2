@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   root 'toppages#index'
 
   resources :sections
-  resources :section_okrs
-  resources :personal_okrs
+  resources :section_okrs do
+    resources :key_results
+  end
+  resources :personal_okrs do
+    resources :key_results
+  end
 end
