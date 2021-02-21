@@ -19,6 +19,14 @@
     <%= f.text_field :objective_reason, class: "" %>
   </div>
 
+  <%= f.fields_for :key_results do |key_result| %>
+    <%= render 'key_result_fields', f: key_result %>
+  <% end %>
+
+  <div class="links">
+    <%= link_to_add_association "KR追加", f, :key_results %>
+  </div>
+
   <div class="flex flex-col mt-8">
     <%= f.submit "登録", class: "" %>
   </div>

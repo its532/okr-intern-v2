@@ -1,0 +1,13 @@
+<div class="nested-fields">
+  <div class="flex flex-col mt-4">
+    <%= f.label :key_result %>
+    <%= f.text_field :key_result, class: "flex-grow h-8 px-2 rounded border border-grey-400" %>
+  </div>
+
+  <div class="flex flex-col mt-4">
+    <%= f.label :key_result_point %>
+    <%= f.number_field :key_result_point, step: "0.1", class: "flex-grow h-8 px-2 rounded border border-grey-400" %>
+  </div>
+
+  <%= link_to_remove_association "削除", f, class: 'bg-red-500 rounded-lg text-white text-center px-2 py-0.5 transition duration-300 ease-in-out hover:bg-red-600' %>
+</div>

@@ -4,7 +4,7 @@ class PersonalOkrsController < ApplicationController
 
   def new
     @personal_okr = PersonalOkr.new
-    # @personal_okr.personal_key_results.build
+    @personal_okr.key_results.build
   end
 
   def index
@@ -30,6 +30,6 @@ class PersonalOkrsController < ApplicationController
     # end
 
     def personal_okr_params
-      params.require(:personal_okr).permit(:section_id, :objective, :objective_reason, :user_id, :quarter)
+      params.require(:personal_okr).permit(:section_id, :objective, :objective_reason, :user_id, :quarter, key_results_attributes: %i[id key_result key_result_point _destroy])
     end
 end
