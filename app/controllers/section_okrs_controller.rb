@@ -4,7 +4,7 @@ class SectionOkrsController < ApplicationController
 
   def new
     @section_okr = SectionOkr.new
-    # @section_okr.section_key_results.build
+    @section_okr.key_results.build
   end
 
   def index
@@ -29,6 +29,6 @@ class SectionOkrsController < ApplicationController
     # end
 
     def section_okr_params
-      params.require(:section_okr).permit(:section_id, :objective, :quarter)
+      params.require(:section_okr).permit(:section_id, :objective, :quarter, key_results_attributes: %i[id key_result key_result_point _destroy])
     end
 end
