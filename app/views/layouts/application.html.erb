@@ -14,6 +14,35 @@
   </header>
 
   <body>
+
+  <% if notice %>
+      <div class="">
+        <div class="">
+          <div class="">
+            <p class="text-base">
+              <% notice.split("\n").each do |message| %>
+                <%= message %><br>
+              <% end %>
+            </p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <% if alert %>
+      <div class="">
+        <div class="">
+          <div class="">
+            <p class="text-base">
+              <% alert.split("\n").each do |message| %>
+                <%= message %><br>
+              <% end %>
+            </p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
