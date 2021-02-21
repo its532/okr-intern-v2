@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_20_152302) do
+ActiveRecord::Schema.define(version: 2021_02_21_160214) do
+
+  create_table "key_results", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.text "key_result"
+    t.float "key_result_point"
+    t.string "okr_type"
+    t.bigint "okr_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["okr_type", "okr_id"], name: "index_key_results_on_okr_type_and_okr_id"
+  end
 
   create_table "personal_okrs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.text "objective"
