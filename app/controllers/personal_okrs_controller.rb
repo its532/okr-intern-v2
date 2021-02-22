@@ -36,6 +36,12 @@ class PersonalOkrsController < ApplicationController
     end
   end
 
+  def destroy
+    @personal_okr.destroy
+    flash[:notice] = "OKRを削除しました"
+    redirect_to personal_okrs_path(quarter: @personal_okr.quarter)
+  end
+
   private
 
     def set_personal_okr
