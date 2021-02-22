@@ -48,6 +48,6 @@ class SectionOkrsController < ApplicationController
     end
 
     def section_okr_params
-      params.require(:section_okr).permit(:section_id, :objective, :quarter, key_results_attributes: %i[id key_result key_result_point _destroy])
+      params.require(:section_okr).permit(:section_id, :objective, :quarter, key_results_attributes: %i[id title point _destroy])
     end
 end
