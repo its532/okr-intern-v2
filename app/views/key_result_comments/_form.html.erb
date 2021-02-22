@@ -1,0 +1,22 @@
+<div class="">
+  <div class="">
+    <%= f.label :month, "月" %>
+    <%= f.select :month, [['1月']], { selected: f.object.month }, class: "", required: true %>
+  </div>
+
+  <div class="">
+    <%= f.label :comment %>
+    <%= f.text_area :comment, class: "" %>
+  </div>
+
+  <div class="flex flex-col mt-4">
+    <%= f.label :measure, "KR達成の為の施作" %>
+    <%= f.text_area :measure, class: "" %>
+  </div>
+
+  <%= f.hidden_field :key_result_id, value: @key_result.id %>
+
+  <div class="flex flex-col mt-8">
+    <%= f.submit "登録", class: "" %>
+  </div>
+</div>

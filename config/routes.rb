@@ -9,9 +9,7 @@ Rails.application.routes.draw do
   resources :sections
   resources :section_okrs do
     resources :key_results
-    namespace :key_results do
-      resources :key_result_cooments
-    end
+    resources :key_result_comments
   end
 
   resources :personal_okrs do
