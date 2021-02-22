@@ -1,6 +1,6 @@
 class PersonalOkrsController < ApplicationController
   before_action :sign_in_required
-  # before_action :set_section_okr, only: %i[edit update destroy]
+  before_action :set_personal_okr, only: %i[edit update destroy]
 
   def new
     @personal_okr = PersonalOkr.new
@@ -23,11 +23,24 @@ class PersonalOkrsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @personal_okr.update(personal_okr_params)
+      flash[:notice] = "OKRを更新しました"
+      redirect_to personal_okrs_path(quarter: @personal_okr.quarter)
+    else
+      flash[:alert] = ErrorFormatter.format(@personal_okr)
+      render 'edit'
+    end
+  end
+
   private
 
-    # def set_personal_okr
-    #   @personal_okr = PersonalOkr.find(params[:id])
-    # end
+    def set_personal_okr
+      @personal_okr = PersonalOkr.find(params[:id])
+    end
 
     def personal_okr_params
       params.require(:personal_okr).permit(:section_id, :objective, :objective_reason, :user_id, :quarter, key_results_attributes: %i[id key_result key_result_point _destroy])

@@ -6,7 +6,13 @@
   </div>
 
     <% @personal_okrs.each do |personal_okr| %>
-          <span class="font-semibold"><%= personal_okr.section %></span>
-          <span class="font-semibold"><%= personal_okr.objective %></span>
+      <span class="font-semibold"><%= personal_okr.section %></span>
+      <span class="font-semibold"><%= personal_okr.objective %></span>
+      <div>
+        <%= link_to '編集', edit_personal_okr_path(personal_okr.id),  class: '' %>
+      </div>
+      <div>
+        <%= link_to '削除', personal_okr_path(personal_okr.id), method: :delete, class: '', data: { confirm: '削除してよろしいですか？' } %>
+      </div>
     <% end %>
 </div>
