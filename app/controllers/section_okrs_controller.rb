@@ -35,6 +35,12 @@ class SectionOkrsController < ApplicationController
     end
   end
 
+  def destroy
+    @section_okr.destroy
+    flash[:notice] = "OKRを削除しました"
+    redirect_to section_okrs_path(quarter: @section_okr.quarter)
+  end
+
   private
 
     def set_section_okr
