@@ -1,0 +1,2 @@
+class KeyResultCommentsController < ApplicationController
+end
