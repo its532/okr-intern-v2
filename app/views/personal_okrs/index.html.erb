@@ -6,8 +6,16 @@
   </div>
 
     <% @personal_okrs.each do |personal_okr| %>
-      <span class="font-semibold"><%= personal_okr.section %></span>
-      <span class="font-semibold"><%= personal_okr.objective %></span>
+      <p class="font-semibold"><%= personal_okr.section %></p>
+      <p class="font-semibold"><%= personal_okr.objective %></p>
+
+      <ul>
+        <% personal_okr.key_results.each do |key_result| %>
+          <li><%= key_result.title %></li>
+          <li><%= key_result.point %></li>
+        <% end %>
+      </ul>
+
       <div>
         <%= link_to '編集', edit_personal_okr_path(personal_okr.id),  class: '' %>
       </div>
