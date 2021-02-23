@@ -1,5 +1,5 @@
 class KeyResultsController < ApplicationController
   def index
-    @personal_key_results = PersonalKeyResult.where(personal_okr_id: params[:personal_okr_id])
+    @key_results = KeyResult.where(okr_id: params[:okr_id])
   end
 end

@@ -1,72 +1,75 @@
 <% provide(:title, 'Section OKR') %>
 
-<div>
-  <div class="flex">
-    <%= link_to '新規登録', new_section_okr_path %>
-  </div>
-  <h1>Section OKR</h1>
-  <div class="table-responsive">
-    <table class="table table-condensed">
-        <thead class="">
-          <tr class="">
-            <th scope="col">
-              <span class="">Section</span>
-            </th>
-            <th scope="col">
-              <span class="">Objective</span>
-            </th>
-            <th scope="col">
-              <span class="">総合得点</span>
-            </th>
-            <th scope="col">
-              <span class="">Point</span>
-            </th>
-            <th scope="col">
-              <span class="">KeyResult</span>
-            </th>
-            <th scope="col">
-              <span class="">操作一覧</span>
-            </th>
-            <th colspan="1"></th>
-          </tr>
-        </thead>
-        <tbody class="">
-        <% @section_okrs.each do |section_okr| %>
-          <tr>
-            <td>
-              <span class=""><%= section_okr.section.name %></span>
-            </td>
-            <td>
-              <span class=""><%= section_okr.objective %></span>
-            </td>
-            <td>
-              <span class=""><%= "ss" %></span>
-            </td>
-            <td>
+<div class="flex">
+  <%= link_to '新規登録', new_section_okr_path %>
+</div>
+<h1>Section OKR</h1>
+<div class="">
+  <table class="table table-responsive" style="white-space: nowrap">
+      <thead>
+        <tr class="">
+          <th scope="col">
+            <span class="">Section</span>
+          </th>
+          <th scope="col">
+            <span class="">Objective</span>
+          </th>
+          <th scope="col">
+            <span class="">Point</span>
+          </th>
+          <th scope="col">
+            <span class="">KeyResult</span>
+          </th>
+          <th scope="col">
+            <span class="">コメント</span>
+          </th>
+          <th scope="col">
+            <span class="">操作一覧</span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @section_okrs.each do |section_okr| %>
+        <tr>
+          <td>
+            <%= section_okr.section.name %>
+          </td>
+          <td>
+            <%= section_okr.objective %>
+          </td>
+          <td>
+          <% section_okr.key_results.each do |key_result| %>
+            <p><%= key_result.point %></p>
+          <% end %>
+          </td>
+          <td>
+          <ul>
             <% section_okr.key_results.each do |key_result| %>
-              <p><%= key_result.point %></p>
+                <li><%= key_result.title %><hr></li>
             <% end %>
-            </td>
-            <td>
-            <ul>
-              <% section_okr.key_results.each do |key_result| %>
-                  <li><%= key_result.title %><hr></li>
+          </ul>
+          </td>
+          <td>
+          <% section_okr.key_results.each do |key_result| %>
+            <% if key_result.key_result_comments.present? %>
+              <% key_result.key_result_comments.each do |key_result_comment| %>
+                <%= key_result_comment.month %>
+                <%= key_result_comment.comment %>
               <% end %>
-            </ul>
+            <% end %>
+          <% end %>
+          </td>
+          <td>
+            <div>
+              <%= link_to '編集', edit_section_okr_path(section_okr.id),  class: '' %>
+            </div>
+            <div>
+              <%= link_to '削除', section_okr_path(section_okr.id), method: :delete, class: '', data: { confirm: '削除してよろしいですか？' } %>
+            </div>
             </td>
-            <td>
-              
-              <div>
-                <%= link_to '編集', edit_section_okr_path(section_okr.id),  class: '' %>
-              </div>
-              <div>
-                <%= link_to '削除', section_okr_path(section_okr.id), method: :delete, class: '', data: { confirm: '削除してよろしいですか？' } %>
-              </div>
-              </td>
-            </td>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
-  </div>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
 </div>
