@@ -1,9 +1,9 @@
 class KeyResultCommentsController < ApplicationController
   before_action :set_key_result, only: %i[new edit]
+  before_action :set_section_okr, only: %i[new edit]
   # before_action :set_section_key_result_comment, only: %i[edit update destroy]
 
   def new
-    @section_okr = SectionOkr.find_by(id: params[:section_okr_id])
     @key_result_comment = KeyResultComment.new
   end
 
@@ -25,8 +25,8 @@ class KeyResultCommentsController < ApplicationController
     end
 
     def set_section_okr
-      @section_okr = SectionOkr.find_by(id: params[:id])
-      p @key_result
+      @section_okr = SectionOkr.find_by(id: params[:okr_id])
+      p @section_okr
     end
 
     def set_key_result

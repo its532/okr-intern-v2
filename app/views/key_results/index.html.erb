@@ -1,0 +1,20 @@
+<div>
+  <% @key_results.each do |key_result| %>
+  <div class="flex">
+    <%= link_to '新規登録', new_section_okr_key_result_comment_path(okr_id: params[:okr_id], key_result_id: key_result.id) %>
+  </div>
+
+  <h4><%= key_result.title %></h4>
+
+  <ul>
+    <% key_result.key_result_comments.each do |key_result_comment| %>
+      <li><%= key_result_comment.month %></li>
+      <li><span>コメント</span> : <%= key_result_comment.comment %></li>
+      <li><span>KR達成の為の施作</span> : <%= key_result_comment.measure %></li>
+      <%= link_to '編集', edit_section_okr_key_result_comment_path(key_result_comment.id) %>
+      <%= link_to '削除', section_okr_key_result_comment_path(key_result_comment.id), method: :delete, data: { confirm: '削除してよろしいですか？' } %>
+    <hr>
+    <% end %>
+  </ul>
+  <% end %>
+</div>
