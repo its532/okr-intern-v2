@@ -43,9 +43,9 @@
             <%= section_okr.objective %>
           </td>
           <td>
-          <% section_okr.key_results.each do |key_result| %>
-            <p><%= key_result.point %></p>
-          <% end %>
+            <% section_okr.key_results.each do |key_result| %>
+              <p><%= key_result.point %></p>
+            <% end %>
           </td>
           <td>
           <ul>
@@ -65,6 +65,9 @@
           <% end %>
           </td>
           <td>
+            <div>
+              <%= link_to 'コメント', section_okr_key_results_path(section_okr.id, okr_type: 'SectionOkr', okr_id: section_okr.id) %>
+            </div>
             <div>
               <%= link_to '編集', edit_section_okr_path(section_okr.id),  class: '' %>
             </div>
