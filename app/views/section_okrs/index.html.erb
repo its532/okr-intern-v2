@@ -2,6 +2,11 @@
 
 <div class="flex">
   <%= link_to '新規登録', new_section_okr_path %>
+  <%= form_tag section_okrs_path, method: :get, class: "flex" do %>
+    <%= select_tag 'year', options_for_select(SectionOkr.order(:year).pluck(:year).uniq, selected: @section_okrs.pluck(:year).uniq) %>
+    <%= select_tag 'quarter', options_for_select(SectionOkr.order(:quarter).pluck(:quarter).uniq, selected: @section_okrs.pluck(:quarter).uniq) %>
+    <%= submit_tag "検索" %>
+  <% end %>
 </div>
 <h1>Section OKR</h1>
 <div class="">
