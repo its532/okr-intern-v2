@@ -8,7 +8,11 @@ class SectionOkrsController < ApplicationController
   end
 
   def index
-    @section_okrs = SectionOkr.all
+    if params[:quarter] && params[:year]
+      @section_okrs = SectionOkr.where(quarter: params[:quarter]).where(year: params[:year])
+    else
+      @section_okrs = SectionOkr.where(year: SectionOkr.all.last ?  SectionOkr.all.order(:year).last.year : '').where(quarter: SectionOkr.all.last ?  SectionOkr.all.order(:year).order(:quarter).last.quarter : '')
+    end
   end
 
   def create
