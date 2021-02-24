@@ -2,10 +2,14 @@
 
 <div class="flex">
   <%= link_to '新規登録', new_personal_okr_path %>
+  <%= form_tag personal_okrs_path, method: :get, class: "flex" do %>
+    <%= select_tag 'year', options_for_select(PersonalOkr.order(:year).pluck(:year).uniq, selected: @personal_okrs.pluck(:year).uniq) %>
+    <%= select_tag 'quarter', options_for_select(PersonalOkr.order(:quarter).pluck(:quarter).uniq, selected: @personal_okrs.pluck(:quarter).uniq) %>
+    <%= submit_tag "検索" %>
+  <% end %>
 </div>
-
-<h1>個人 OKR</h1>
 <div>
+  <h1>個人 OKR</h1>
   <table class="table table-responsive" style="white-space: nowrap">
       <thead class="thead-dark">
         <tr>

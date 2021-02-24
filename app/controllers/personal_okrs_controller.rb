@@ -8,7 +8,11 @@ class PersonalOkrsController < ApplicationController
   end
 
   def index
-    @personal_okrs = PersonalOkr.all
+    if params[:quarter] && params[:year]
+      @personal_okrs = PersonalOkr.where(quarter: params[:quarter]).where(year: params[:year])
+    else
+      @personal_okrs = PersonalOkr.where(year: PersonalOkr.all.last ?  PersonalOkr.all.order(:year).last.year : '').where(quarter: PersonalOkr.all.last ?  PersonalOkr.all.order(:year).order(:quarter).last.quarter : '')
+    end
   end
 
   def create
