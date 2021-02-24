@@ -5,6 +5,7 @@ class User < ApplicationRecord
         :recoverable, :rememberable, :validatable, :trackable, :omniauthable, omniauth_providers: %i[google_oauth2]
 
   mount_uploader :image, ImageUploader
+  has_many :personal_okrs
 
   protected
 

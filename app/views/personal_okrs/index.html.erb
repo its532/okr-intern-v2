@@ -1,26 +1,103 @@
 <% provide(:title, 'Personal OKR') %>
 
+<div class="flex">
+  <%= link_to '新規登録', new_personal_okr_path %>
+</div>
+
+<h1>個人 OKR</h1>
 <div>
-  <div class="flex">
-    <%= link_to '新規登録', new_personal_okr_path %>
-  </div>
-
-    <% @personal_okrs.each do |personal_okr| %>
-      <p class="font-semibold"><%= personal_okr.section %></p>
-      <p class="font-semibold"><%= personal_okr.objective %></p>
-
-      <ul>
-        <% personal_okr.key_results.each do |key_result| %>
-          <li><%= key_result.title %></li>
-          <li><%= key_result.point %></li>
-        <% end %>
-      </ul>
-
-      <div>
-        <%= link_to '編集', edit_personal_okr_path(personal_okr.id),  class: '' %>
-      </div>
-      <div>
-        <%= link_to '削除', personal_okr_path(personal_okr.id), method: :delete, class: '', data: { confirm: '削除してよろしいですか？' } %>
-      </div>
-    <% end %>
+  <table class="table table-responsive" style="white-space: nowrap">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">
+            <span></span>
+          </th>
+          <th scope="col">
+            <span>Name</span>
+          </th>
+          <th scope="col">
+            <span>Section</span>
+          </th>
+          <th scope="col">
+            <span>Objective</span>
+          </th>
+          <th scope="col">
+            <span>Objective 設定理由</span>
+          </th>
+          <th scope="col">
+            <span>総合得点</span>
+          </th>
+          <th scope="col">
+            <span>Point</span>
+          </th>
+          <th scope="col">
+            <span>KeyResult</span>
+          </th>
+          <% select_months(@personal_okrs.pluck(:quarter)[0]).each do |month| %>
+            <th scope="col">
+              <span><%= month[0] %></span>
+            </th>
+          <% end %>
+          <th scope="col">
+            <span>操作一覧</span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @personal_okrs.each do |personal_okr| %>
+        <tr>
+          <td>
+            <%= personal_okr %>
+          </td>
+          <td>
+            <%= personal_okr.user.name %>
+          </td>
+          <td>
+            <%= personal_okr.section.name %>
+          </td>
+          <td>
+            <%= personal_okr.objective %>
+          </td>
+          <td>
+            <%= personal_okr.objective_reason %>
+          </td>
+          <td>
+            <%= average_score_point(personal_okr.key_results) %>
+          </td>
+          <td>
+            <% personal_okr.key_results.each do |key_result| %>
+              <li><%= key_result.point %><hr></li>
+            <% end %>
+          </td>
+          <td>
+          <ul>
+            <% personal_okr.key_results.each do |key_result| %>
+                <li><%= key_result.title %><hr></li>
+            <% end %>
+          </ul>
+          </td>
+          <% select_months(@personal_okrs.pluck(:quarter)[0]).each do |month| %>
+            <td>
+            <% personal_okr.key_results.each do |key_result| %>
+              <% key_results_comment = KeyResultComment.find_by(month: month[0], key_result_id: key_result.id) %>
+              <li><%= key_results_comment ?  key_results_comment.comment : "" %><hr></li>
+            <% end %>
+            </td>
+          <% end %>
+          <td>
+            <div>
+              <%= link_to 'コメント', key_results_path(okr_type: 'SectionOkr', okr_id: personal_okr.id) %>
+            </div>
+            <div>
+              <%= link_to '編集', edit_personal_okr_path(personal_okr.id),  class: '' %>
+            </div>
+            <div>
+              <%= link_to '削除', personal_okr_path(personal_okr.id), method: :delete, class: '', data: { confirm: '削除してよろしいですか？' } %>
+            </div>
+            </td>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
 </div>
