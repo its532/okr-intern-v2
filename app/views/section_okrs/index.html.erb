@@ -9,27 +9,29 @@
   <% end %>
 </div>
 <h1>Section OKR</h1>
-<div class="">
+<div>
   <table class="table table-responsive" style="white-space: nowrap">
-      <thead>
-        <tr class="">
+      <thead class="thead-dark">
+        <tr>
           <th scope="col">
-            <span class="">Section</span>
+            <span>Section</span>
           </th>
           <th scope="col">
-            <span class="">Objective</span>
+            <span>Objective</span>
           </th>
           <th scope="col">
-            <span class="">Point</span>
+            <span>Point</span>
           </th>
           <th scope="col">
-            <span class="">KeyResult</span>
+            <span>KeyResult</span>
           </th>
+          <% select_months(@section_okrs.pluck(:quarter)[0]).each do |month| %>
+            <th scope="col">
+              <span><%= month[0] %></span>
+            </th>
+          <% end %>
           <th scope="col">
-            <span class="">コメント</span>
-          </th>
-          <th scope="col">
-            <span class="">操作一覧</span>
+            <span>操作一覧</span>
           </th>
         </tr>
       </thead>
@@ -44,7 +46,7 @@
           </td>
           <td>
             <% section_okr.key_results.each do |key_result| %>
-              <p><%= key_result.point %></p>
+              <li><%= key_result.point %><hr></li>
             <% end %>
           </td>
           <td>
@@ -54,16 +56,14 @@
             <% end %>
           </ul>
           </td>
-          <td>
-          <% section_okr.key_results.each do |key_result| %>
-            <% if key_result.key_result_comments.present? %>
-              <% key_result.key_result_comments.each do |key_result_comment| %>
-                <%= key_result_comment.month %>
-                <%= key_result_comment.comment %>
-              <% end %>
+          <% select_months(@section_okrs.pluck(:quarter)[0]).each do |month| %>
+            <td>
+            <% section_okr.key_results.each do |key_result| %>
+              <% key_results_comment = KeyResultComment.find_by(month: month[0], key_result_id: key_result.id) %>
+              <li><%= key_results_comment ?  key_results_comment.comment : "" %><hr></li>
             <% end %>
+            </td>
           <% end %>
-          </td>
           <td>
             <div>
               <%= link_to 'コメント', key_results_path(okr_type: 'SectionOkr', okr_id: section_okr.id) %>
