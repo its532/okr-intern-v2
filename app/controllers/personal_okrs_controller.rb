@@ -49,6 +49,6 @@ class PersonalOkrsController < ApplicationController
     end
 
     def personal_okr_params
-      params.require(:personal_okr).permit(:section_id, :objective, :objective_reason, :user_id, :quarter, key_results_attributes: %i[id title point _destroy])
+      params.require(:personal_okr).permit(:section_id, :objective, :objective_reason, :year, :user_id, :quarter, key_results_attributes: %i[id title point _destroy])
     end
 end
