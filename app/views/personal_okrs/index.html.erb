@@ -47,7 +47,7 @@
       <% @personal_okrs.each do |personal_okr| %>
         <tr>
           <td>
-            <%= personal_okr %>
+            <img src=<%= personal_okr.user_image %> class = "icon_image">
           </td>
           <td>
             <%= personal_okr.user.name %>
