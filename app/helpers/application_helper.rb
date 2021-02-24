@@ -10,4 +10,13 @@ module ApplicationHelper
       [['10月', '10月'], ['11月', '11月'], ['12月', '12月']]
     end
   end
+
+  def average_score_point(model)
+    key_result_point_array = model.pluck(:point).compact
+
+    if key_result_point_array.size > 0
+      average_key_result_point = key_result_point_array.sum / key_result_point_array.length
+      average_key_result_point.round(1)
+    end
+  end
 end

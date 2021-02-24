@@ -20,6 +20,9 @@
             <span>Objective</span>
           </th>
           <th scope="col">
+            <span>総合得点</span>
+          </th>
+          <th scope="col">
             <span>Point</span>
           </th>
           <th scope="col">
@@ -43,6 +46,9 @@
           </td>
           <td>
             <%= section_okr.objective %>
+          </td>
+          <td>
+            <%= average_score_point(section_okr.key_results) %>
           </td>
           <td>
             <% section_okr.key_results.each do |key_result| %>
