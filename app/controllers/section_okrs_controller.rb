@@ -47,11 +47,11 @@ class SectionOkrsController < ApplicationController
 
   private
 
-    def set_section_okr
-      @section_okr = SectionOkr.find(params[:id])
-    end
-
     def section_okr_params
       params.require(:section_okr).permit(:section_id, :objective, :quarter, :year, key_results_attributes: %i[id title point _destroy])
+    end
+
+    def set_section_okr
+      @section_okr = SectionOkr.find(params[:id])
     end
 end
