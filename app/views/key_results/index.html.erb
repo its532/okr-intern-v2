@@ -1,12 +1,7 @@
 <div>
   <% @key_results.each do |key_result| %>
   <div class="flex">
-    <% if params[:okr_type] == 'SectionOkr' %>
-      <%= params %>
-      <%= link_to '新規登録', new_key_result_comment_path(okr_id: params[:okr_id], key_result_id: key_result.id, okr_type: params[:okr_type]) %>
-    <% else %>
-      <%= link_to '新規登録' %>
-    <% end %>
+    <%= link_to '新規登録', new_key_result_comment_path(okr_id: params[:okr_id], key_result_id: key_result.id, okr_type: params[:okr_type]) %>
   </div>
 
   <h4><%= key_result.title %></h4>

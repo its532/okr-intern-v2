@@ -1,7 +1,7 @@
 <div class="">
-  <div class="">
+  <div>
     <%= f.label :month, "月" %>
-    <%= f.select :month, [['1月']], { selected: f.object.month }, class: "", required: true %>
+    <%= f.select :month, select_months(@key_result.okr.quarter), { selected: f.object.month }, class: "", required: true %>
   </div>
 
   <div class="">
