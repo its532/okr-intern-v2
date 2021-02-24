@@ -1,7 +1,8 @@
 <div class="">
   <div class="">
     <%= f.label :quarter, "Quarter" %>
-    <%= f.select :quarter, [['20/Q1'], ['20/Q2'], ['20/Q3'], ['20/Q4'], ['21/Q1']], { selected: f.object.quarter }, class: "", required: true %>
+    <%= f.select :year, Array.new(20){ |i| Time.now.year + i }, { selected: f.object.year }, required: true %>
+    <%= f.select :quarter, [['Q1'], ['Q2'], ['Q3'], ['Q4']], { selected: f.object.quarter }, required: true %>
   </div>
 
   <div class="flex flex-col mt-4">

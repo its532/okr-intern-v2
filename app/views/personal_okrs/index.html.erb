@@ -86,7 +86,7 @@
           <% end %>
           <td>
             <div>
-              <%= link_to 'コメント', key_results_path(okr_type: 'SectionOkr', okr_id: personal_okr.id) %>
+              <%= link_to 'コメント', key_results_path(okr_type: 'PersonalOkr', okr_id: personal_okr.id) %>
             </div>
             <div>
               <%= link_to '編集', edit_personal_okr_path(personal_okr.id),  class: '' %>
