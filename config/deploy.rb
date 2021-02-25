@@ -1,4 +1,4 @@
-lock '3.4.0'
+lock '3.4.1'
 
 set :application, 'okr-intern-v2'
 
