@@ -56,5 +56,5 @@ production:
   host: okr-intern-mysql.cfmplmnudagw.ap-northeast-1.rds.amazonaws.com
   database: okr_inten_production
   username: root
-  password: ENV['DB_PASSWORD']
+  password: itsukiaoikyo3
   socket: /var/lib/mysql/mysql.sock
