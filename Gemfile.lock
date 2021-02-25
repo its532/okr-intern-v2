@@ -304,7 +304,7 @@ DEPENDENCIES
   active_decorator
   bootsnap (>= 1.4.2)
   byebug
-  capistrano (~> 3.4.0)
+  capistrano (~> 3.4.1)
   capistrano-bundler
   capistrano-rails
   capistrano-rbenv
