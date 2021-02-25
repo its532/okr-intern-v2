@@ -50,6 +50,7 @@ test:
 #
 production:
   <<: *default
-  database: okr_intern_v2_production
-  username: okr_intern_v2
-  password: <%= ENV['OKR_INTERN_V2_DATABASE_PASSWORD'] %>
+  database: okr_intern_production
+  username: root
+  password: <%= ENV['DB_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
