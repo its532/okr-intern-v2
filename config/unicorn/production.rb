@@ -21,6 +21,7 @@ pid $pid
 
 preload_app true
 
+ENV['BUNDLE_GEMFILE'] = '/var/www/okr-intern-v2/current/Gemfile'
 before_fork do |server, worker|
   defined?(ActiveRecord::Base) and ActiveRecord::Base.connection.disconnect!
   old_pid = "#{server.config[:pid]}.oldbin"
