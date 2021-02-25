@@ -2,7 +2,7 @@ $worker = 2
 
 $timeout = 30
 
-$app_dir = "/var/www/okr-intern-v2/current"
+$app_dir = "/var/www/rails/okr-intern-v2/current"
 
 #リクエストを受け取るポート番号を指定
 $listen = File.expand_path 'tmp/sockets/.unicorn.sock', $app_dir
@@ -23,7 +23,6 @@ preload_app true
 
 before_fork do |server, worker|
   defined?(ActiveRecord::Base) and ActiveRecord::Base.connection.disconnect!
-  ENV['BUNDLE_GEMFILE'] = '/var/www/okr-intern-v2/current/Gemfile'
 
   old_pid = "#{server.config[:pid]}.oldbin"
   if old_pid != server.pid
