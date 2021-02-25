@@ -38,13 +38,11 @@ namespace :deploy do
     end
   end
 
-  desc 'Upgrade yarn'
-  task :yarn_upgrade do
-    on roles(:app) do
+  desc 'Run rake yarn:install'
+  task :yarn_install do
+    on roles(:web) do
       within release_path do
-        with rails_env: fetch(:rails_env) do
-          execute :yarn, :upgrade
-        end
+        execute("cd #{release_path} && yarn install")
       end
     end
   end
@@ -59,6 +57,8 @@ namespace :deploy do
       end
     end
   end
+
+  before "deploy:assets:precompile", "deploy:yarn_install"
 
   after :publishing, :restart
 
