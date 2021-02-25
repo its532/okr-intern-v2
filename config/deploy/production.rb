@@ -59,3 +59,7 @@
 #     auth_methods: %w(publickey password)
 #     # password: "please use keys"
 #   }
+
+server '35.72.216.16', user: 'itsuki', roles: %w{app db web}
+
+set :ssh_options, keys: '~/.ssh/okr-intern_key_rsa'
