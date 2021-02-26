@@ -12,7 +12,9 @@
           <%= link_to 'ユーザー情報', root_path %>
           <%= link_to 'セクションOKR', section_okrs_path, class: "my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0" %>
           <%= link_to '個人OKR', personal_okrs_path, class: "" %>
-          <%= link_to 'セクション', sections_path %>
+          <% if current_user.admin? %>
+            <%= link_to 'セクション名', sections_path %>
+          <% end %>
           <%= link_to 'プロフィール変更', edit_user_registration_path %>
           <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
         <% else %>

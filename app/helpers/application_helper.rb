@@ -19,4 +19,8 @@ module ApplicationHelper
       average_key_result_point.round(1)
     end
   end
+
+  def current_user?(user)
+    user == current_user
+  end
 end

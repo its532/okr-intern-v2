@@ -20,7 +20,7 @@ class PersonalOkrsController < ApplicationController
     @personal_okr.user_id = current_user.id
     if @personal_okr.save
       flash[:notice] = "OKRを登録しました"
-      redirect_to personal_okrs_path(quarter: @personal_okr.quarter)
+      redirect_to personal_okrs_path(quarter: @personal_okr.quarter, year: @personal_okr.year)
     else
       flash[:alert] = ErrorFormatter.format(@personal_okr)
       render 'new'
@@ -33,7 +33,7 @@ class PersonalOkrsController < ApplicationController
   def update
     if @personal_okr.update(personal_okr_params)
       flash[:notice] = "OKRを更新しました"
-      redirect_to personal_okrs_path(quarter: @personal_okr.quarter)
+      redirect_to personal_okrs_path(quarter: @personal_okr.quarter, year: @personal_okr.year)
     else
       flash[:alert] = ErrorFormatter.format(@personal_okr)
       render 'edit'
@@ -43,7 +43,7 @@ class PersonalOkrsController < ApplicationController
   def destroy
     @personal_okr.destroy
     flash[:notice] = "OKRを削除しました"
-    redirect_to personal_okrs_path(quarter: @personal_okr.quarter)
+    redirect_to personal_okrs_path(quarter: @personal_okr.quarter, year: @personal_okr.year)
   end
 
   private

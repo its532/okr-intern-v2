@@ -51,7 +51,7 @@
     <% @personal_okrs.each do |personal_okr| %>
       <tr>
         <td>
-          <img src=<%= personal_okr.user_image %> class = "icon_image">
+          <img src=<%= personal_okr.user.image %> class = "icon_image">
         </td>
         <td>
           <%= personal_okr.user.name %>
@@ -92,12 +92,14 @@
           <div>
             <%= link_to 'コメント', key_results_path(okr_type: 'PersonalOkr', okr_id: personal_okr.id) %>
           </div>
-          <div>
-            <%= link_to '編集', edit_personal_okr_path(personal_okr.id),  class: '' %>
-          </div>
-          <div>
-            <%= link_to '削除', personal_okr_path(personal_okr.id), method: :delete, class: '', data: { confirm: '削除してよろしいですか？' } %>
-          </div>
+          <% if current_user.admin? || current_user?(personal_okr.user) %>
+            <div>
+              <%= link_to '編集', edit_personal_okr_path(personal_okr.id),  class: '' %>
+            </div>
+            <div>
+              <%= link_to '削除', personal_okr_path(personal_okr.id), method: :delete, class: '', data: { confirm: '削除してよろしいですか？' } %>
+            </div>
+          <% end %>
           </td>
         </td>
       </tr>
