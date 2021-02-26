@@ -6,8 +6,8 @@
   </div>
 
   <div class="flex flex-col mt-4">
-    <%= f.label :section_id %>
-    <%= f.select :section_id, Section.all.map{|section| [section.name, section.id]}, { selected: f.object.section_id }, class: 'form-control', required: true %>
+    <%= f.label :section %>
+    <%= f.select :section, Section.all.map{|section| [section.name, section.name]}, { selected: f.object.section }, class: 'form-control', required: true %>
   </div>
 
   <div class="flex flex-col mt-4">

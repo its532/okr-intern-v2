@@ -37,7 +37,7 @@ class SectionsController < ApplicationController
   def destroy
     @section.destroy
     flash[:notice] = "Section名を削除しました"
-    redirect_to section_okrs_path(quarter: @section_okr.quarter)
+    redirect_to sections_path
   end
 
   private
