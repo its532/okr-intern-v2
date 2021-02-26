@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_26_102842) do
+ActiveRecord::Schema.define(version: 2021_02_26_103114) do
 
   create_table "key_result_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.text "comment"
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2021_02_26_102842) do
     t.text "objective_reason"
     t.string "quarter", default: "", null: false
     t.bigint "user_id"
-    t.bigint "section"
+    t.string "section"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "year"
