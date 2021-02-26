@@ -49,13 +49,6 @@ namespace :deploy do
     end
   end
 
-  desc 'Upload packs'
-  task :upload_packs do
-    on roles(:app) do
-      upload!('public/packs', "#{current_path}/public/packs", recursive: true)
-    end
-  end
-
   desc 'Run seed'
   task :seed do
     on roles(:app) do
@@ -67,7 +60,6 @@ namespace :deploy do
     end
   end
 
-  before 'unicorn:start', 'deploy:upload_packs'
   after :publishing, :restart
 
   after :restart, :clear_cache do
