@@ -16,7 +16,7 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
   password: <%= ENV['MYSQL_PASSWORD'] || '' %>
-  host: <%= ENV['MYSQL_HOST'] || 'localhost' %>
+  host: okr-intern-v2_db
 
 development:
   <<: *default
