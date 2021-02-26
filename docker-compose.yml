@@ -24,7 +24,5 @@ services:
     tty: true
     environment:
       - BUNDLE_PATH=/bundle
-      - MYSQL_HOST=okr-intern-mysql.cfmplmnudagw.ap-northeast-1.rds.amazonaws.com
-      - MYSQL_PASSWORD=password
 volumes:
   bundle_path:
