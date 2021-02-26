@@ -18,6 +18,8 @@ set :rbenv_ruby, '2.7.1'
 
 set :log_level, :debug
 
+set :assets_roles, [:web, :app]
+
 set :yarn_flags, '--prefer-offline --production'
 set :yarn_roles, :app
 
@@ -57,8 +59,6 @@ namespace :deploy do
       end
     end
   end
-
-  before "deploy:assets:precompile", "deploy:yarn_install"
 
   after :publishing, :restart
 
