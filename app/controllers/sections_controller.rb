@@ -13,7 +13,7 @@ class SectionsController < ApplicationController
   def create
     @section = Section.new(section_params)
     if @section.save
-      flash[:notice] = "Sectionを登録しました"
+      flash[:notice] = "Section名を登録しました"
       redirect_to sections_path
     else
       flash[:alert] = ErrorFormatter.format(@section)
@@ -26,12 +26,18 @@ class SectionsController < ApplicationController
 
   def update
     if @section.update(section_params)
-      flash[:notice] = "Sectionを更新しました"
+      flash[:notice] = "Section名を更新しました"
       redirect_to sections_path
     else
       flash[:alert] = ErrorFormatter.format(@section)
       render 'edit'
     end
+  end
+
+  def destroy
+    @section.destroy
+    flash[:notice] = "Section名を削除しました"
+    redirect_to section_okrs_path(quarter: @section_okr.quarter)
   end
 
   private

@@ -28,7 +28,7 @@
               <%= link_to '編集', edit_section_path(section.id),  class: '' %>
             </div>
             <div>
-              <%= link_to '削除', new_section_path(section.id), method: :delete, class: '', data: { confirm: '削除してよろしいですか？' } %>
+              <%= link_to '削除', section_path(section.id), method: :delete, class: '', data: { confirm: '削除してよろしいですか？' } %>
             </div>
           </td>
         </tr>
