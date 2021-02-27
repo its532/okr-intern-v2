@@ -33,6 +33,7 @@ gem 'cocoon'
 gem 'fog-aws'
 
 gem 'slack-notifier'
+gem 'whenever', require: false
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
