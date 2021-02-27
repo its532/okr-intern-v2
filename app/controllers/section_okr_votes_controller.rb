@@ -7,7 +7,11 @@ class SectionOkrVotesController < ApplicationController
   end
 
   def index
-    @section_okr_votes = SectionOkrVote.all
+    if current_user.admin?
+      @section_okr_votes = SectionOkrVote.all
+    else
+      @section_okr_votes = SectionOkrVote.where(user_id: current_user.id)
+    end
   end
 
   def create
