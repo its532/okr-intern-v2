@@ -1,0 +1,8 @@
+<% provide(:title, '投票登録') %>
+
+<div class="">
+  <h1 class="">投票編集</h1>
+    <%= form_with(model: @section_okr_vote, local: true, class: "") do |f| %>
+      <%= render 'form', f: f %>
+    <% end %>
+</div>

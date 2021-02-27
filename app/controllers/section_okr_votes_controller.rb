@@ -1,5 +1,6 @@
 class SectionOkrVotesController < ApplicationController
-  before_action :set_section_okrs, only: %i[new]
+  before_action :set_section_okr_vote, only: %i[edit update destroy]
+  before_action :set_section_okrs, only: %i[new edit]
 
   def new
     @section_okr_vote = SectionOkrVote.new
@@ -15,17 +16,40 @@ class SectionOkrVotesController < ApplicationController
     p @section_okr_vote.section_okr
     if @section_okr_vote.save
       flash[:notice] = "投票完了しました"
-      redirect_to section_okr_votes_path
+      redirect_to section_okrs_path(quarter: @section_okr_vote.section_okr.quarter, year: @section_okr_vote.section_okr.year)
     else
       flash[:alert] = ErrorFormatter.format(@section_okr_vote)
       render 'new'
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @section_okr_vote.update(section_okr_votes_params)
+      flash[:notice] = "投票を更新しました"
+      redirect_to section_okr_votes_path
+    else
+      flash[:alert] = ErrorFormatter.format(@section_okr)
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @section_okr_vote.destroy
+    flash[:notice] = "投票を削除しました"
+    redirect_to section_okr_votes_path
+  end
+
   private
 
     def section_okr_votes_params
       params.require(:section_okr_vote).permit(:comment, :quarter, :year, :user_id, :section_okr_id)
+    end
+
+    def set_section_okr_vote
+      @section_okr_vote = SectionOkrVote.find(params[:id])
     end
 
     def set_section_okrs
