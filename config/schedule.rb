@@ -23,6 +23,6 @@ set :output, 'log/cron.log'
 set :environment, :production
 ENV.each { |k, v| env(k, v) }
 
-# every 1.minute do
-#   rake 'section_okr_vote:slack_notifier'
-# end
+every '0 10 5 1,4,7,10 *'  do
+  rake 'section_okr_vote:slack_notifier'
+end
