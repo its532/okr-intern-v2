@@ -19,7 +19,7 @@ class SectionOkrsController < ApplicationController
     @section_okr = SectionOkr.new(section_okr_params)
     if @section_okr.save
       flash[:notice] = "OKRを登録しました"
-      redirect_to section_okrs_path(quarter: @section_okr.quarter)
+      redirect_to section_okrs_path(quarter: @section_okr.quarter, year: @section_okr.year)
     else
       flash[:alert] = ErrorFormatter.format(@section_okr)
       render 'new'
@@ -32,7 +32,7 @@ class SectionOkrsController < ApplicationController
   def update
     if @section_okr.update(section_okr_params)
       flash[:notice] = "OKRを更新しました"
-      redirect_to section_okrs_path(quarter: @section_okr.quarter)
+      redirect_to section_okrs_path(quarter: @section_okr.quarter, year: @section_okr.year)
     else
       flash[:alert] = ErrorFormatter.format(@section_okr)
       render 'edit'
@@ -42,7 +42,7 @@ class SectionOkrsController < ApplicationController
   def destroy
     @section_okr.destroy
     flash[:notice] = "OKRを削除しました"
-    redirect_to section_okrs_path(quarter: @section_okr.quarter)
+    redirect_to section_okrs_path(quarter: @section_okr.quarter, year: @section_okr.year)
   end
 
   private

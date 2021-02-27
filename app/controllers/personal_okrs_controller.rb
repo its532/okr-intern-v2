@@ -9,9 +9,9 @@ class PersonalOkrsController < ApplicationController
 
   def index
     if params[:quarter] && params[:year]
-      @personal_okrs = PersonalOkr.where(quarter: params[:quarter]).where(year: params[:year])
+      @personal_okrs = PersonalOkr.joins(:user).where(quarter: params[:quarter]).where(year: params[:year]).order('users.hire_date')
     else
-      @personal_okrs = PersonalOkr.where(year: PersonalOkr.all.last ?  PersonalOkr.all.order(:year).last.year : '').where(quarter: PersonalOkr.all.last ?  PersonalOkr.all.order(:year).order(:quarter).last.quarter : '')
+      @personal_okrs = PersonalOkr.joins(:user).where(year: PersonalOkr.all.last ?  PersonalOkr.all.order(:year).last.year : '').where(quarter: PersonalOkr.all.last ?  PersonalOkr.all.order(:year).order(:quarter).last.quarter : '').order('users.hire_date')
     end
   end
 
