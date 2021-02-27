@@ -10,6 +10,8 @@ RUN apt-get update -qq \
 			&& n stable \
 			&& npm install -g yarn
 
+RUN apt-get install -y cron
+
 RUN mkdir /okr-intern-v2
 WORKDIR /okr-intern-v2
 COPY Gemfile /okr-intern-v2/Gemfile

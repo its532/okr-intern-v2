@@ -20,9 +20,9 @@
 # Learn more: http://github.com/javan/whenever
 
 set :output, 'log/cron.log'
+set :environment, :production
+ENV.each { |k, v| env(k, v) }
 
-if @environment.to_sym == :production
-  every '' do
-    rake ''
-  end
+every 1.minute do
+  rake 'section_okr_vote:slack_notifier'
 end
