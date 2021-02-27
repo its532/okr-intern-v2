@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   resources :key_results
   resources :key_result_comments
   resources :personal_okrs
+  resources :section_okr_votes
 end

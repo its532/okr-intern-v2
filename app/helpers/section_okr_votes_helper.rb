@@ -1,0 +1,2 @@
+module SectionOkrVotesHelper
+end

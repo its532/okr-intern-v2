@@ -1,0 +1,2 @@
+class SectionOkrVotesController < ApplicationController
+end
