@@ -48,8 +48,6 @@ ActiveRecord::Schema.define(version: 2021_02_27_081936) do
   create_table "section_okr_votes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "section_okr_id", null: false
-    t.string "quarter", default: "", null: false
-    t.string "year", default: "", null: false
     t.text "comment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

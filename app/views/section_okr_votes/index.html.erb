@@ -1,16 +1,10 @@
 <% provide(:title, 'Section 投票') %>
 
-<div class="flex">
-  <%= link_to '新規登録', new_section_okr_vote_path %>
-</div>
-
 <div>
   <% @section_okr_votes.each do |section_okr_vote| %>
 
   <ul>
-    <li><%= key_result_comment.month %></li>
-    <li><span>コメント</span> : <%= key_result_comment.comment %></li>
-    <li><span>KR達成の為の施作</span> : <%= key_result_comment.measure %></li>
+    <li><span>コメント</span> : <%= section_okr_vote.comment %></li>
     <%= link_to '編集', edit_section_okr_vote_path(section_okr_vote.id) %>
     <%= link_to '削除', section_okr_vote_path(section_okr_vote.id), method: :delete, data: { confirm: '削除してよろしいですか？' } %>
     <hr>

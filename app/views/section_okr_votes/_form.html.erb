@@ -1,0 +1,22 @@
+<div>
+  <h3><%= @section_okrs[0].year %> : <%= @section_okrs[0].quarter %></h3>
+  <% @section_okrs.each do |section_okr| %>
+    <ul>
+      <li><%= section_okr.section %> : <%= section_okr.objective %></li>
+    </ul>
+  <% end %>
+
+  <div>
+    <%= f.label :section_okr_id %>
+    <%= f.select :section_okr_id, @section_okrs.all.map{|section_okr| [section_okr.section, section_okr.id]}, { selected: f.object.id }, class: 'form-control', required: true %>
+  </div>
+
+  <div>
+    <%= f.label :comment %>
+    <%= f.text_field :comment, class: "" %>
+  </div>
+
+  <div>
+    <%= f.submit "登録", class: "" %>
+  </div>
+</div>

@@ -1,7 +1,9 @@
 <% provide(:title, 'Section OKR') %>
 
 <div class="flex">
-  <%= link_to '新規登録', new_section_okr_path %>
+  <%= link_to 'SectionOkr登録', new_section_okr_path %>
+  <%= link_to '投票一覧', section_okr_votes_path(quarter: params[:quarter], year: params[:year]) %>
+  <%= link_to '投票登録', new_section_okr_vote_path(quarter: params[:quarter], year: params[:year]) %>
   <%= form_tag section_okrs_path, method: :get, class: "flex" do %>
     <%= select_tag 'year', options_for_select(SectionOkr.order(:year).pluck(:year).uniq, selected: @section_okrs.pluck(:year).uniq) %>
     <%= select_tag 'quarter', options_for_select(SectionOkr.order(:quarter).pluck(:quarter).uniq, selected: @section_okrs.pluck(:quarter).uniq) %>
