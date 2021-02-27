@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_26_103808) do
+ActiveRecord::Schema.define(version: 2021_02_27_081936) do
 
   create_table "key_result_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.text "comment"
@@ -43,6 +43,16 @@ ActiveRecord::Schema.define(version: 2021_02_26_103808) do
     t.string "year"
     t.index ["section"], name: "index_personal_okrs_on_section"
     t.index ["user_id"], name: "index_personal_okrs_on_user_id"
+  end
+
+  create_table "section_okr_votes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "section_okr_id", null: false
+    t.text "comment"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["section_okr_id"], name: "index_section_okr_votes_on_section_okr_id"
+    t.index ["user_id"], name: "index_section_okr_votes_on_user_id"
   end
 
   create_table "section_okrs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -85,4 +95,6 @@ ActiveRecord::Schema.define(version: 2021_02_26_103808) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "section_okr_votes", "section_okrs"
+  add_foreign_key "section_okr_votes", "users"
 end

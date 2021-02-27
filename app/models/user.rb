@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   mount_uploader :image, ImageUploader
   has_many :personal_okrs
+  has_many :section_okrs, through: :section_okr_votes
 
   protected
 
