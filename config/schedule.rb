@@ -18,3 +18,11 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
+
+set :output, 'log/cron.log'
+
+if @environment.to_sym == :production
+  every '' do
+    rake ''
+  end
+end

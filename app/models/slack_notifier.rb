@@ -8,6 +8,6 @@ class SlackNotifier
   end
 
   def send(message)
-    Slack::Notifier.new(WEBHOOK_URL).ping("#{message[0]}")
+    Slack::Notifier.new(WEBHOOK_URL).ping(message)
   end
 end
