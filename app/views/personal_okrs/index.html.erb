@@ -97,7 +97,7 @@
               <%= link_to '編集', edit_personal_okr_path(personal_okr.id), class: "btn btn-success" %>
             </div>
             <div>
-              <%= link_to '削除', personal_okr_path(personal_okr.id), method: :delete, class: '', data: { confirm: '削除してよろしいですか？' } %>
+              <%= link_to '削除', personal_okr_path(personal_okr.id), method: :delete, class: "btn btn-danger", data: { confirm: '削除してよろしいですか？' } %>
             </div>
           <% end %>
           </td>
