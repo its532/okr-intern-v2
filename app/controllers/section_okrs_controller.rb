@@ -10,9 +10,9 @@ class SectionOkrsController < ApplicationController
 
   def index
     if params[:quarter] && params[:year]
-      @section_okrs = SectionOkr.where(quarter: params[:quarter]).where(year: params[:year])
+      @section_okrs = SectionOkr.where(quarter: params[:quarter]).where(year: params[:year]).order(weight: :asc)
     else
-      @section_okrs = SectionOkr.where(year: SectionOkr.all.last ?  SectionOkr.all.order(:year).last.year : '').where(quarter: SectionOkr.all.last ?  SectionOkr.all.order(:year).order(:quarter).last.quarter : '')
+      @section_okrs = SectionOkr.where(year: SectionOkr.all.last ?  SectionOkr.all.order(:year).last.year : '').where(quarter: SectionOkr.all.last ?  SectionOkr.all.order(:year).order(:quarter).last.quarter : '').order(weight: :asc)
     end
   end
 
