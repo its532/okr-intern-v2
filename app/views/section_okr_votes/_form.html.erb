@@ -1,5 +1,9 @@
 <div>
-  <h3><%= @section_okrs[0].year %> : <%= @section_okrs[0].quarter %></h3>
+  <% if @section_okrs.present? %>
+    <h3><%= @section_okrs[0].year %> : <%= @section_okrs[0].quarter %></h3>
+  <% else %>
+    <h3><%= "投票対象がありません" %></h3>
+  <% end %>
   <% @section_okrs.each do |section_okr| %>
     <ul>
       <li><%= section_okr.section %> : <%= section_okr.objective %></li>
