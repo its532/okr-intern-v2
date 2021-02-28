@@ -103,7 +103,7 @@
         <% end %>
         <td class="align-middle">
           <div>
-            <%= link_to 'コメント', key_results_path(okr_type: 'PersonalOkr', okr_id: personal_okr.id), class: "btn btn-secondary" %>
+            <%= link_to 'コメント', key_results_path(okr_type: 'PersonalOkr', okr_id: personal_okr.id), class: "btn btn-secondary", target: :_blank, rel: "noopener noreferrer" %>
           </div>
           <% if current_user.admin? || current_user?(personal_okr.user) %>
             <div>

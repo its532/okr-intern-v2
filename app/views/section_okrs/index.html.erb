@@ -97,7 +97,7 @@
           <% end %>
           <td class="align-middle">
             <div>
-              <%= link_to 'コメント', key_results_path(okr_type: 'SectionOkr', okr_id: section_okr.id), class: "btn btn-secondary" %>
+              <%= link_to 'コメント', key_results_path(okr_type: 'SectionOkr', okr_id: section_okr.id), class: "btn btn-secondary", target: :_blank, rel: "noopener noreferrer" %>
             </div>
             <div>
               <%= link_to '編集', edit_section_okr_path(section_okr.id), class: "btn btn-success" %>
