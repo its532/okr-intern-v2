@@ -41,7 +41,7 @@
           <%= personal_okr.year %>/<%= personal_okr.quarter %>
         </td>
         <td class="align-middle">
-          <%= personal_okr.section %>
+          <span class="font-weight-bold"><%= personal_okr.section %></span>
         </td>
         <td class="align-middle">
           <%= personal_okr.objective %>
@@ -50,7 +50,7 @@
           <%= personal_okr.objective_reason %>
         </td>
         <td class="align-middle">
-          <%= average_score_point(personal_okr.key_results) %>
+          <span class="font-weight-bold"><%= average_score_point(personal_okr.key_results) %></span>
         </td>
         <td>
         <ul class="list-group list-group-flush">
