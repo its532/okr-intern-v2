@@ -8,9 +8,9 @@ class SectionOkrVotesController < ApplicationController
 
   def index
     if current_user.admin?
-      @section_okr_votes = SectionOkrVote.joins(:section_okr).order(year: :desc).order(:quarter)
+      @section_okr_votes = SectionOkrVote.joins(:section_okr).order(year: :desc).order(:quarter).page(params[:page]).per(20)
     else
-      @section_okr_votes = SectionOkrVote.where(user_id: current_user.id)
+      @section_okr_votes = SectionOkrVote.where(user_id: current_user.id).page(params[:page]).per(20)
     end
   end
 
