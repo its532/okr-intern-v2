@@ -3,8 +3,14 @@
 
   <ul class="navbar-nav ml-auto">
     <% if user_signed_in? %>
-      <li class="nav-item">
-        <%= link_to 'ユーザー情報', root_path, class: "nav-link" %>
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          ユーザー情報
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <%= link_to 'ユーザーページ', root_path, class: "dropdown-item" %>
+          <%= link_to 'プロフィール変更', edit_user_registration_path, class: "dropdown-item" %>
+        </div>
       </li>
       <li class="nav-item">
         <%= link_to 'セクションOKR', section_okrs_path, class: "nav-link" %>
@@ -19,9 +25,6 @@
       <% end %>
       <li class="nav-item">
         <%= link_to '投票一覧', section_okr_votes_path, class: "nav-link" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to 'プロフィール変更', edit_user_registration_path, class: "nav-link" %>
       </li>
       <li class="nav-item">
         <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "nav-link" %>
