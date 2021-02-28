@@ -5,17 +5,17 @@
     <%= render "devise/shared/error_messages", resource: resource %>
 
     <div class="form-group">
-      <%= f.label :name %><br />
+      <%= f.label :name, "名前" %><br />
       <%= f.text_field :name, class: "form-control", required: true %>
     </div>
 
     <div class="form-group">
-      <%= f.label :hire_date %><br />
+      <%= f.label :hire_date, "入社日" %><br />
       <%= f.date_select :hire_date, class: "form-control", required: true %>
     </div>
 
     <div class="form-group">
-      <%= f.label :image %>
+      <%= f.label :image, "プロフィール画像" %><br />
       <%= f.file_field :image %>
     </div>
 
