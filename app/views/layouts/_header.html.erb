@@ -1,28 +1,38 @@
-<nav>
-  <div>
-    <div>
-      <div>
-        <%= link_to 'OKR Intern', root_path %>
-      </div>
-    </div>
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+  <span class="navbar-brand"><%= 'OKR Intern' %></span>
 
-    <div>
-      <div>
-        <% if user_signed_in? %>
-          <%= link_to 'ユーザー情報', root_path %>
-          <%= link_to 'セクションOKR', section_okrs_path %>
-          <%= link_to '個人OKR', personal_okrs_path, class: "" %>
-          <% if current_user.admin? %>
-            <%= link_to 'セクション名', sections_path %>
-          <% end %>
-          <%= link_to '投票一覧', section_okr_votes_path %>
-          <%= link_to 'プロフィール変更', edit_user_registration_path %>
-          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
-        <% else %>
-          <%= link_to 'サインアップ', new_user_registration_path %>
-          <%= link_to 'ログイン', new_user_session_path %>
-        <% end %>
-      </div>
-    </div>
-  </div>
+  <ul class="navbar-nav ml-auto">
+    <% if user_signed_in? %>
+      <li class="nav-item">
+        <%= link_to 'ユーザー情報', root_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'セクションOKR', section_okrs_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to '個人OKR', personal_okrs_path, class: "nav-link" %>
+      </li>
+      <% if current_user.admin? %>
+      <li class="nav-item">
+        <%= link_to 'セクション名', sections_path, class: "nav-link" %>
+      </li>
+      <% end %>
+      <li class="nav-item">
+        <%= link_to '投票一覧', section_okr_votes_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'プロフィール変更', edit_user_registration_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "nav-link" %>
+      </li>
+    <% else %>
+      <li class="nav-item">
+        <%= link_to 'サインアップ', new_user_registration_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'ログイン', new_user_session_path, class: "nav-link" %>
+      </li>
+    <% end %>
+  </ul>
 </nav>

@@ -1,8 +1,12 @@
 @import '~bootstrap/scss/bootstrap';
 
 .icon_image {
-    width: 100px;
-    height: 100px;
-    border-radius: 100px;
-    object-fit: cover;
+  width: 100px;
+  height: 100px;
+  border-radius: 100px;
+  object-fit: cover;
+}
+
+nav {
+  margin-bottom: 25px;
 }
