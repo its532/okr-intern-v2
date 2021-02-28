@@ -14,6 +14,9 @@
   <table class='table table-fixed'>
       <thead class="thead-dark">
         <tr>
+          <th class="col">
+            <span>並び替え</span>
+          </th>
           <th scope="col">
             <span>Quarter</span>
           </th>
@@ -45,6 +48,14 @@
       <tbody>
       <% @section_okrs.each do |section_okr| %>
         <tr>
+          <td class="col">
+            <%= button_to section_okr_weight_path(section_okr.id), { method: :put, class: "sort-btn", params: { id: section_okr.id, quarter: section_okr.quarter, year: section_okr.year, mode: "up" } } do %>
+            <i class="glyphicon glyphicon-circle-arrow-up"></i>
+          <% end %>
+            <%= button_to section_okr_weight_path(section_okr.id), { method: :put, class: "sort-btn", params: { id: section_okr.id, quarter: section_okr.quarter, year: section_okr.year, mode: "down" } } do %>
+            <i class="glyphicon glyphicon-circle-arrow-down"></i>
+          <% end %>
+          </td>
           <td>
             <%= section_okr.year %>/<%= section_okr.quarter %>
           </td>
