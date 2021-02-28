@@ -1,14 +1,17 @@
 <% provide(:title, 'Personal OKR') %>
 
+<h2>個人 OKR</h2>
+
 <div class="form-group">
-  <h2>個人 OKR</h2>
-  <%= form_tag personal_okrs_path, method: :get, class: "flex" do %>
+  <div class="register">
+    <%= link_to '新規登録', new_personal_okr_path, class: "btn btn-info" %>
+  </div>
+  <%= form_tag personal_okrs_path, method: :get, class: "search-form" do %>
     <%= select_tag 'year', options_for_select(PersonalOkr.order(:year).pluck(:year).uniq, selected: @personal_okrs.pluck(:year).uniq) %>
     <%= select_tag 'quarter', options_for_select(PersonalOkr.order(:quarter).pluck(:quarter).uniq, selected: @personal_okrs.pluck(:quarter).uniq) %>
     <%= submit_tag "検索", class: "btn-sm btn-link" %>
   <% end %>
 </div>
-  <%= link_to '新規登録', new_personal_okr_path, class: "btn btn-info" %>
 <div class='text-nowrap table-responsive'>
   <table class='table table-fixed'>
     <thead class="thead-dark">

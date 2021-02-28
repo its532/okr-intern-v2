@@ -1,15 +1,18 @@
 <% provide(:title, 'Section OKR') %>
 
-<div class="flex">
-  <h2>Section OKR</h2>
-  <%= form_tag section_okrs_path, method: :get, class: "flex" do %>
+<h2>Section OKR</h2>
+
+<div>
+  <div class="register">
+    <%= link_to '新規登録', new_section_okr_path, class: "btn btn-info" %>
+    <%= link_to '投票', new_section_okr_vote_path(quarter: params[:quarter], year: params[:year]), class: "btn btn-info" %>
+  </div>
+  <%= form_tag section_okrs_path, method: :get, class: "search-form" do %>
     <%= select_tag 'year', options_for_select(SectionOkr.order(:year).pluck(:year).uniq, selected: @section_okrs.pluck(:year).uniq) %>
     <%= select_tag 'quarter', options_for_select(SectionOkr.order(:quarter).pluck(:quarter).uniq, selected: @section_okrs.pluck(:quarter).uniq) %>
     <%= submit_tag "検索", class: "btn-sm btn-link" %>
   <% end %>
 </div>
-  <%= link_to '新規登録', new_section_okr_path, class: "btn btn-info" %>
-  <%= link_to '投票', new_section_okr_vote_path(quarter: params[:quarter], year: params[:year]), class: "btn btn-info" %>
 <div class='text-nowrap table-responsive'>
   <table class='table table-fixed'>
       <thead class="thead-dark">
