@@ -23,6 +23,8 @@
     <%= link_to_add_association "KR追加", f, :key_results, class: "btn-sm btn-outline-info" %>
   </div>
 
+  <%= f.hidden_field :weight, value: @section_okr.weight %>
+
   <div class="flex flex-col mt-8">
     <%= f.submit "登録", class: "btn btn-info" %>
   </div>
