@@ -17,13 +17,12 @@ class SectionOkrVotesController < ApplicationController
   def create
     @section_okr_vote = SectionOkrVote.new(section_okr_votes_params)
     @section_okr_vote.user_id = current_user.id
-    p @section_okr_vote.section_okr
     if @section_okr_vote.save
       flash[:notice] = "投票完了しました"
       redirect_to section_okrs_path(quarter: @section_okr_vote.section_okr.quarter, year: @section_okr_vote.section_okr.year)
     else
       flash[:alert] = ErrorFormatter.format(@section_okr_vote)
-      render 'new'
+      redirect_back(fallback_location: root_path)
     end
   end
 
@@ -62,6 +61,5 @@ class SectionOkrVotesController < ApplicationController
       else
         @section_okrs = SectionOkr.where(year: SectionOkr.all.last ?  SectionOkr.all.order(:year).last.year : '').where(quarter: SectionOkr.all.last ?  SectionOkr.all.order(:year).order(:quarter).last.quarter : '')
       end
-      p @section_okrs
     end
 end
