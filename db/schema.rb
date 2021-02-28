@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_27_194813) do
+ActiveRecord::Schema.define(version: 2021_02_28_185942) do
 
   create_table "key_result_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.text "comment"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 2021_02_27_194813) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "section"
     t.string "year"
+    t.integer "weight", default: 0, null: false
     t.index ["section"], name: "index_section_okrs_on_section"
   end
 
