@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   resources :key_result_comments
   resources :personal_okrs
   resources :section_okr_votes
+  resources :section_okr_weights, only: %i[update]
 end

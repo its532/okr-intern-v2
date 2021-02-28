@@ -1,0 +1,2 @@
+class SectionOkrWeightsController < ApplicationController
+end
