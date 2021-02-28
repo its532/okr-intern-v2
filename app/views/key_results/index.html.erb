@@ -1,16 +1,15 @@
 <div>
+  <h2>コメント一覧</h2>
   <% @key_results.each do |key_result| %>
-  <div class="flex">
+
+  <h4>Key Result : <%= key_result.title %></h4>
   <% if key_result.okr_type == 'SectionOkr' %>
-    <%= link_to '新規登録', new_key_result_comment_path(okr_id: params[:okr_id], key_result_id: key_result.id, okr_type: params[:okr_type]), class: "btn btn-info" %>
+    <%= link_to 'コメント登録', new_key_result_comment_path(okr_id: params[:okr_id], key_result_id: key_result.id, okr_type: params[:okr_type]), class: "btn-sm btn-info" %>
   <hr>
   <% elsif key_result.okr_type == 'PersonalOkr' && (current_user.admin? || current_user?(key_result.okr.user)) %>
-    <%= link_to '新規登録', new_key_result_comment_path(okr_id: params[:okr_id], key_result_id: key_result.id, okr_type: params[:okr_type]), class: "btn btn-info" %>
+    <%= link_to 'コメント登録', new_key_result_comment_path(okr_id: params[:okr_id], key_result_id: key_result.id, okr_type: params[:okr_type]), class: "btn-sm btn-info" %>
   <hr>
   <% end %>
-  </div>
-
-  <h4><%= key_result.title %></h4>
 
   <ul>
     <% key_result.key_result_comments.each do |key_result_comment| %>
@@ -18,12 +17,12 @@
       <li><span>コメント</span> : <%= key_result_comment.comment %></li>
       <li><span>KR達成の為の施作</span> : <%= key_result_comment.measure %></li>
       <% if key_result.okr_type == 'SectionOkr' %>
-        <%= link_to '編集', edit_key_result_comment_path(id: key_result_comment.id, okr_id: params[:okr_id], key_result_id: key_result.id, okr_type: params[:okr_type]), class: "btn btn-success" %>
-        <%= link_to '削除', key_result_comment_path(id: key_result_comment.id), method: :delete, data: { confirm: '削除してよろしいですか？' }, class: "btn btn-danger" %>
+        <%= link_to '編集', edit_key_result_comment_path(id: key_result_comment.id, okr_id: params[:okr_id], key_result_id: key_result.id, okr_type: params[:okr_type]), class: "btn-sm btn-success" %>
+        <%= link_to '削除', key_result_comment_path(id: key_result_comment.id), method: :delete, data: { confirm: '削除してよろしいですか？' }, class: "btn-sm btn-danger" %>
       <hr>
       <% elsif key_result.okr_type == 'PersonalOkr' && (current_user.admin? || current_user?(key_result.okr.user)) %>
-        <%= link_to '編集', edit_key_result_comment_path(id: key_result_comment.id, okr_id: params[:okr_id], key_result_id: key_result.id, okr_type: params[:okr_type]), class: "btn btn-success" %>
-        <%= link_to '削除', key_result_comment_path(id: key_result_comment.id), method: :delete, data: { confirm: '削除してよろしいですか？' }, class: "btn btn-danger" %>
+        <%= link_to '編集', edit_key_result_comment_path(id: key_result_comment.id, okr_id: params[:okr_id], key_result_id: key_result.id, okr_type: params[:okr_type]), class: "btn-sm btn-success" %>
+        <%= link_to '削除', key_result_comment_path(id: key_result_comment.id), method: :delete, data: { confirm: '削除してよろしいですか？' }, class: "btn-sm btn-danger" %>
       <hr>
       <% end %>
     <% end %>
