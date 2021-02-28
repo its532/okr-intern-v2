@@ -22,7 +22,7 @@
           </td>
           <td>
             <div>
-              <%= link_to '編集', edit_section_path(section.id),  class: '' %>
+              <%= link_to '編集', edit_section_path(section.id), class: "btn btn-success" %>
             </div>
             <div>
               <%= link_to '削除', section_path(section.id), method: :delete, class: '', data: { confirm: '削除してよろしいですか？' } %>

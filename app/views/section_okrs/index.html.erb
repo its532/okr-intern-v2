@@ -76,7 +76,7 @@
               <%= link_to 'コメント', key_results_path(okr_type: 'SectionOkr', okr_id: section_okr.id) %>
             </div>
             <div>
-              <%= link_to '編集', edit_section_okr_path(section_okr.id),  class: '' %>
+              <%= link_to '編集', edit_section_okr_path(section_okr.id), class: "btn btn-success" %>
             </div>
             <div>
               <%= link_to '削除', section_okr_path(section_okr.id), method: :delete, class: '', data: { confirm: '削除してよろしいですか？' } %>
