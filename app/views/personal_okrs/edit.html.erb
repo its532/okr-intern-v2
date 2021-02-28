@@ -1,7 +1,7 @@
 <% provide(:title, 'Edit') %>
 
-<div class="flex flex-col flex-1 justify-center mb-8 mt-8">
-  <h1 class="text-4xl text-center">個人OKR編集</h1>
+<div class="form-container">
+  <h1>個人OKR編集</h1>
   <%= form_with(model: @personal_okr, local: true, class: "form-horizontal w-3/4 mx-auto") do |f| %>
     <%= render 'form', f: f %>
   <% end %>

@@ -1,24 +1,24 @@
-<div class="">
-  <div>
+<div>
+  <div class="form-group">
     <%= f.label :month, "月" %>
-    <%= f.select :month, select_months(@key_result.okr.quarter), { selected: f.object.month }, class: "", required: true %>
+    <%= f.select :month, select_months(@key_result.okr.quarter), { selected: f.object.month }, class: "form-control", required: true %>
   </div>
 
-  <div class="">
+  <div class="form-group">
     <%= f.label :comment %>
-    <%= f.text_area :comment, class: "" %>
+    <%= f.text_area :comment, class: "form-control" %>
   </div>
 
-  <div class="flex flex-col mt-4">
+  <div class="form-group">
     <%= f.label :measure, "KR達成の為の施作" %>
-    <%= f.text_area :measure, class: "" %>
+    <%= f.text_area :measure, class: "form-control" %>
   </div>
 
   <%= f.hidden_field :key_result_id, value: @key_result.id %>
   <%= f.hidden_field :okr_id, value: @key_result.okr_id %>
   <%= f.hidden_field :okr_type, value: @key_result.okr_type %>
 
-  <div class="flex flex-col mt-8">
+  <div>
     <%= f.submit "登録", class: "" %>
   </div>
 </div>

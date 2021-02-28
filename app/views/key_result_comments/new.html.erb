@@ -1,8 +1,8 @@
 <% provide(:title, 'Comment登録') %>
 
-<div class="">
-  <h1 class="">コメント登録</h1>
-  <p class="">Key Result : <%= @key_result.title %></p>
+<div class="form-container">
+  <h1>コメント登録</h1>
+  <p>Key Result : <%= @key_result.title %></p>
     <%= form_with(model: @key_result_comment, local: true, class: "") do |f| %>
       <%= render 'form', f: f %>
     <% end %>

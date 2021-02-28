@@ -1,18 +1,18 @@
-<div class="w-full mt-4">
-  <div class="flex flex-col mt-4">
+<div>
+  <div class="form-group">
     <%= f.label :quarter, "Quarter" %>
-    <%= f.select :year, Array.new(20){ |i| Time.now.year + i }, { selected: f.object.year }, required: true %>
-    <%= f.select :quarter, [['Q1'], ['Q2'], ['Q3'], ['Q4']], { selected: f.object.quarter }, class: "", required: true %>
+    <%= f.select :year, Array.new(20){ |i| Time.now.year + i }, { selected: f.object.year }, required: true, class: "form-control" %>
+    <%= f.select :quarter, [['Q1'], ['Q2'], ['Q3'], ['Q4']], { selected: f.object.quarter }, class: "form-control", required: true %>
   </div>
 
-  <div class="flex flex-col mt-4">
+  <div class="form-group">
     <%= f.label :section %>
-    <%= f.select :section, Section.all.map{|section| [section.name, section.name]}, { selected: f.object.section }, class: 'form-control', required: true %>
+    <%= f.select :section, Section.all.map{|section| [section.name, section.name]}, { selected: f.object.section }, class: "form-control", required: true %>
   </div>
 
-  <div class="flex flex-col mt-4">
+  <div class="form-group">
     <%= f.label :Objective %>
-    <%= f.text_field :objective, class: "" %>
+    <%= f.text_field :objective, class: "form-control" %>
   </div>
 
   <%= f.fields_for :key_results do |key_result| %>
