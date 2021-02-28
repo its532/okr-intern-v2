@@ -11,7 +11,7 @@
   <%= link_to '新規登録', new_section_okr_path, class: "btn btn-info" %>
   <%= link_to '投票登録', new_section_okr_vote_path(quarter: params[:quarter], year: params[:year]), class: "btn btn-info" %>
 <div class='text-nowrap table-responsive'>
-  <table class='table table-hover table-fixed'>
+  <table class='table table-fixed'>
       <thead class="thead-dark">
         <tr>
           <th scope="col">
@@ -52,23 +52,27 @@
             <%= average_score_point(section_okr.key_results) %>
           </td>
           <td>
-            <% section_okr.key_results.each do |key_result| %>
-              <li><%= key_result.point %><hr></li>
-            <% end %>
+            <ul class="list-group list-group-flush">
+              <% section_okr.key_results.each do |key_result| %>
+                <li class="list-group-item"><%= key_result.point %></li>
+              <% end %>
+            </ul>
           </td>
           <td>
-          <ul>
+          <ul class="list-group list-group-flush">
             <% section_okr.key_results.each do |key_result| %>
-                <li><%= key_result.title %><hr></li>
+                <li class="list-group-item"><%= key_result.title %></li>
             <% end %>
           </ul>
           </td>
           <% select_months(@section_okrs.pluck(:quarter)[0]).each do |month| %>
             <td>
+            <ul class="list-group list-group-flush">
             <% section_okr.key_results.each do |key_result| %>
               <% key_results_comment = KeyResultComment.find_by(month: month[0], key_result_id: key_result.id) %>
-              <li><%= key_results_comment ?  key_results_comment.comment : "" %><hr></li>
+              <li class="list-group-item"><%= key_results_comment ?  key_results_comment.comment : "-" %></li>
             <% end %>
+            </ul>
             </td>
           <% end %>
           <td>
