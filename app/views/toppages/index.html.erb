@@ -1,10 +1,78 @@
-<h1>Toppages#index</h1>
-<p>Find me in app/views/toppages/index.html.erb</p>
-<%= link_to user_google_oauth2_omniauth_authorize_path, method: :post do %>
-　Google認証ログイン
-<% end %>
-<% if user_signed_in? %>
-  <%= current_user.email %>
-  <p><%= current_user.name %></p>
+<div class="user_top">
   <img src=<%= current_user.image %> class = "icon_image">
-<% end %>
+  <h3><%= current_user.name %></h3>
+</div>
+
+<h2>個人 OKR</h2>
+<div class='text-nowrap table-responsive'>
+  <table class='table table-fixed'>
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">
+          <span>Quarter</span>
+        </th>
+        <th scope="col">
+          <span>Section</span>
+        </th>
+        <th scope="col">
+          <span>Objective</span>
+        </th>
+        <th scope="col">
+          <span>Objective 設定理由</span>
+        </th>
+        <th scope="col">
+          <span>総合得点</span>
+        </th>
+        <th scope="col">
+          <span>Point</span>
+        </th>
+        <th scope="col">
+          <span>KeyResult</span>
+        </th>
+        <th scope="col">
+          <span>操作一覧</span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @personal_okrs.each do |personal_okr| %>
+      <tr>
+        <td>
+          <%= personal_okr.year %>/<%= personal_okr.quarter %>
+        </td>
+        <td>
+          <%= personal_okr.section %>
+        </td>
+        <td>
+          <%= personal_okr.objective %>
+        </td>
+        <td>
+          <%= personal_okr.objective_reason %>
+        </td>
+        <td>
+          <%= average_score_point(personal_okr.key_results) %>
+        </td>
+        <td>
+        <ul class="list-group list-group-flush">
+          <% personal_okr.key_results.each do |key_result| %>
+            <li class="list-group-item"><%= key_result.point %></li>
+          <% end %>
+        </ul>
+        </td>
+        <td>
+        <ul class="list-group list-group-flush">
+          <% personal_okr.key_results.each do |key_result| %>
+              <li class="list-group-item"><%= key_result.title %></li>
+          <% end %>
+        </ul>
+        </td>
+        <td>
+          <div>
+            <%= link_to 'コメント', key_results_path(okr_type: 'PersonalOkr', okr_id: personal_okr.id), class: "btn btn-secondary" %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
