@@ -14,15 +14,21 @@
 admin権限
 * forstaのemailでログインいただければ、寺田さん、戸村さんはadmin権限になるはずです
 
+念の為、ゲストログインでも可能です
+* Email: test@gmail.com
+* Password: test00
+
 okr-intern : http://www.okr-intern.xyz/
 
 * ログアウト機能は削除予定ですが、念の為確認用に置いています
+* ログイン画面もゲストログインのため入力欄残していますが、google認証のみにする予定です
 
 ## Usage
 ```
 $ docker-compose build
 $ docker-compose run web bundle i
 $ docker-compose run web rails db:create
+$ docker-compose run web rails db:seed
 $ docker-compose up     // http://localhost:3001
 $ docker-compose down
 ```
