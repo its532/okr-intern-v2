@@ -11,8 +11,8 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :Objective, required: true %>
-    <%= f.text_field :objective, class: "form-control" %>
+    <%= f.label :Objective %>
+    <%= f.text_field :objective, class: "form-control", required: true  %>
   </div>
 
   <%= f.fields_for :key_results do |key_result| %>
