@@ -3,5 +3,5 @@ class PersonalOkr < ApplicationRecord
   has_many :key_results, as: :okr
   accepts_nested_attributes_for :key_results, allow_destroy: true
 
-  validates :user_id,  uniqueness: { scope: [:quarter], message: "のOKRは既に登録されています"  }
+  validates :user_id,  uniqueness: { scope: [:quarter, :year], message: "のOKRは既に登録されています"  }
 end
