@@ -15,6 +15,9 @@
       <thead class="thead-dark">
         <tr>
           <th scope="col">
+            <span>Quarter</span>
+          </th>
+          <th scope="col">
             <span>Section</span>
           </th>
           <th scope="col">
@@ -42,6 +45,9 @@
       <tbody>
       <% @section_okrs.each do |section_okr| %>
         <tr>
+          <td>
+            <%= section_okr.year %>/<%= section_okr.quarter %>
+          </td>
           <td>
             <%= section_okr.section %>
           </td>
