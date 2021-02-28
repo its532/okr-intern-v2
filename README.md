@@ -51,4 +51,5 @@ $ docker-compose down
 * Section Okrに対して、投票機能を実装。quarterが終わり次第、バッチ処理でsalck通知にて投票が一番多いsectionを通知。各ユーザーのコメントもslackで通知させるようにした。
   * 投稿一覧画面では自分の投票を閲覧可能。(編集、削除可能)　admin権限は全投票を閲覧可能。
 * 今回はawsのec2にデプロイした(DB: MySQL, サーバー：Nginx)
+* 画像保存はs3に
 * Capistranoでの自動デプロイ(途中まで動いていたのですが、直前で動かなくなりました、、)
