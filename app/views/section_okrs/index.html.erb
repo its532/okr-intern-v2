@@ -51,7 +51,7 @@
       <tbody>
       <% @section_okrs.each do |section_okr| %>
         <tr>
-          <td class="col">
+          <td class="align-middle">
             <%= button_to section_okr_weight_path(section_okr.id), { method: :put, class: "sort-btn", params: { id: section_okr.id, quarter: section_okr.quarter, year: section_okr.year, mode: "up" } } do %>
               ↑
             <% end %>
@@ -59,16 +59,16 @@
               ↓
             <% end %>
           </td>
-          <td>
+          <td class="align-middle">
             <%= section_okr.year %>/<%= section_okr.quarter %>
           </td>
-          <td>
+          <td class="align-middle">
             <%= section_okr.section %>
           </td>
-          <td>
+          <td class="align-middle">
             <%= section_okr.objective %>
           </td>
-          <td>
+          <td class="align-middle">
             <%= average_score_point(section_okr.key_results) %>
           </td>
           <td>
