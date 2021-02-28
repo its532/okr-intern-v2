@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>OkrInternV2</title>
+    <title>OkrIntern</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -16,33 +16,25 @@
 
   <body>
   <% if notice %>
-      <div class="">
-        <div class="">
-          <div class="">
-            <p class="text-base">
-              <% notice.split("\n").each do |message| %>
-                <%= message %><br>
-              <% end %>
-            </p>
-          </div>
-        </div>
-      </div>
-    <% end %>
+    <div>
+      <p class="alert alert-success">
+        <% notice.split("\n").each do |message| %>
+          <%= message %><br>
+        <% end %>
+      </p>
+    </div>
+  <% end %>
 
-    <% if alert %>
-      <div class="">
-        <div class="">
-          <div class="">
-            <p class="text-base">
-              <% alert.split("\n").each do |message| %>
-                <%= message %><br>
-              <% end %>
-            </p>
-          </div>
-        </div>
-      </div>
-    <% end %>
+  <% if alert %>
+    <div>
+      <p class="alert alert-danger">
+        <% alert.split("\n").each do |message| %>
+          <%= message %><br>
+        <% end %>
+      </p>
+    </div>
+  <% end %>
 
-    <%= yield %>
+  <%= yield %>
   </body>
 </html>
