@@ -15,7 +15,7 @@ default: &default
   charset: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
-  password: <%= ENV['MYSQL_PASSWORD'] || '' %>
+  password: root
   host: okr-intern-v2_db
 
 development:
