@@ -47,19 +47,19 @@ class SectionOkrVotesController < ApplicationController
 
   private
 
-    def section_okr_votes_params
-      params.require(:section_okr_vote).permit(:comment, :quarter, :year, :user_id, :section_okr_id)
-    end
+  def section_okr_votes_params
+    params.require(:section_okr_vote).permit(:comment, :quarter, :year, :user_id, :section_okr_id)
+  end
 
-    def set_section_okr_vote
-      @section_okr_vote = SectionOkrVote.find(params[:id])
-    end
+  def set_section_okr_vote
+    @section_okr_vote = SectionOkrVote.find(params[:id])
+  end
 
-    def set_section_okrs
-      if params[:quarter] && params[:year]
-        @section_okrs = SectionOkr.where(quarter: params[:quarter]).where(year: params[:year])
-      else
-        @section_okrs = SectionOkr.where(year: SectionOkr.all.last ?  SectionOkr.all.order(:year).last.year : '').where(quarter: SectionOkr.all.last ?  SectionOkr.all.order(:year).order(:quarter).last.quarter : '')
-      end
+  def set_section_okrs
+    if params[:quarter] && params[:year]
+      @section_okrs = SectionOkr.where(quarter: params[:quarter]).where(year: params[:year])
+    else
+      @section_okrs = SectionOkr.where(year: SectionOkr.all.last ?  SectionOkr.all.order(:year).last.year : '').where(quarter: SectionOkr.all.last ?  SectionOkr.all.order(:year).order(:quarter).last.quarter : '')
     end
+  end
 end

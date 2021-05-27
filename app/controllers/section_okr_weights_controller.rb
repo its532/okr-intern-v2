@@ -5,8 +5,6 @@ class SectionOkrWeightsController < ApplicationController
     section_okr = SectionOkr.find_by(id: params[:id])
     target_section_okr = swap_target_section_okr(@section_okrs, section_okr.weight, params[:mode])
 
-    p section_okr
-    p target_section_okr
     if target_section_okr.present?
       SectionOkr.update([section_okr.id, target_section_okr.id], [{ weight: target_section_okr.weight }, { weight: section_okr.weight }])
       redirect_to section_okrs_path(quarter: section_okr.quarter, year: section_okr.year), notice: 'ウェイトを変更しました'
@@ -19,7 +17,6 @@ class SectionOkrWeightsController < ApplicationController
 
   def set_section_okrs
     @section_okrs = SectionOkr.where(quarter: params[:quarter]).where(year: params[:year]).order(:weight)
-    p @section_okrs
   end
 
   def swap_target_section_okr(section_okrs, weight, mode)

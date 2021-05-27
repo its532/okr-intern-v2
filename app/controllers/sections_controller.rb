@@ -42,11 +42,11 @@ class SectionsController < ApplicationController
 
   private
 
-    def set_section
-      @section = Section.find(params[:id])
-    end
+  def set_section
+    @section = Section.find(params[:id])
+  end
 
-    def section_params
-      params.require(:section).permit(:name)
-    end
+  def section_params
+    params.require(:section).permit(:name)
+  end
 end

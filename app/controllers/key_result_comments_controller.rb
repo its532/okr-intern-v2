@@ -39,23 +39,23 @@ class KeyResultCommentsController < ApplicationController
 
   private
 
-    def key_result_comment_params
-      params.require(:key_result_comment).permit(:comment, :month, :measure, :key_result_id)
-    end
+  def key_result_comment_params
+    params.require(:key_result_comment).permit(:comment, :month, :measure, :key_result_id)
+  end
 
-    def set_okr
-      if params[:key_result_comment][:okr_type] == 'SectionOkr'
-        @okr = SectionOkr.find_by(id: params[:key_result_comment][:okr_id])
-      else
-        @okr = PersonalOkr.find_by(id: params[:key_result_comment][:okr_id])
-      end
+  def set_okr
+    if params[:key_result_comment][:okr_type] == 'SectionOkr'
+      @okr = SectionOkr.find_by(id: params[:key_result_comment][:okr_id])
+    else
+      @okr = PersonalOkr.find_by(id: params[:key_result_comment][:okr_id])
     end
+  end
 
-    def set_key_result
-      @key_result = KeyResult.find_by(id: params[:key_result_id])
-    end
+  def set_key_result
+    @key_result = KeyResult.find_by(id: params[:key_result_id])
+  end
 
-    def set_key_result_comment
-      @key_result_comment = KeyResultComment.find_by(id: params[:id])
-    end
+  def set_key_result_comment
+    @key_result_comment = KeyResultComment.find_by(id: params[:id])
+  end
 end

@@ -48,11 +48,11 @@ class PersonalOkrsController < ApplicationController
 
   private
 
-    def set_personal_okr
-      @personal_okr = PersonalOkr.find(params[:id])
-    end
+  def set_personal_okr
+    @personal_okr = PersonalOkr.find(params[:id])
+  end
 
-    def personal_okr_params
-      params.require(:personal_okr).permit(:section, :objective, :objective_reason, :year, :user_id, :quarter, key_results_attributes: %i[id title point _destroy])
-    end
+  def personal_okr_params
+    params.require(:personal_okr).permit(:section, :objective, :objective_reason, :year, :user_id, :quarter, key_results_attributes: %i[id title point _destroy])
+  end
 end

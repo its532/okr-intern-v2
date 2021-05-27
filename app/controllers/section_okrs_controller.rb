@@ -49,15 +49,15 @@ class SectionOkrsController < ApplicationController
 
   private
 
-    def section_okr_params
-      params.require(:section_okr).permit(:section, :objective, :quarter, :year, :weight, key_results_attributes: %i[id title point _destroy])
-    end
+  def section_okr_params
+    params.require(:section_okr).permit(:section, :objective, :quarter, :year, :weight, key_results_attributes: %i[id title point _destroy])
+  end
 
-    def set_section_okr
-      @section_okr = SectionOkr.find(params[:id])
-    end
+  def set_section_okr
+    @section_okr = SectionOkr.find(params[:id])
+  end
 
-    def set_section_okrs
-      @section_okrs = SectionOkr.where(quarter: params[:section_okr][:quarter]).where(year: params[:section_okr][:year])
-    end
+  def set_section_okrs
+    @section_okrs = SectionOkr.where(quarter: params[:section_okr][:quarter]).where(year: params[:section_okr][:year])
+  end
 end
