@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_28_185942) do
+ActiveRecord::Schema.define(version: 2021_07_09_084522) do
 
   create_table "key_result_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.text "comment"
@@ -37,11 +37,11 @@ ActiveRecord::Schema.define(version: 2021_02_28_185942) do
     t.text "objective_reason"
     t.string "quarter", default: "", null: false
     t.bigint "user_id"
-    t.string "section"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "year"
-    t.index ["section"], name: "index_personal_okrs_on_section"
+    t.bigint "section_id"
+    t.index ["section_id"], name: "index_personal_okrs_on_section_id"
     t.index ["user_id"], name: "index_personal_okrs_on_user_id"
   end
 
@@ -60,10 +60,10 @@ ActiveRecord::Schema.define(version: 2021_02_28_185942) do
     t.string "quarter", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "section"
     t.string "year"
     t.integer "weight", default: 0, null: false
-    t.index ["section"], name: "index_section_okrs_on_section"
+    t.bigint "section_id"
+    t.index ["section_id"], name: "index_section_okrs_on_section_id"
   end
 
   create_table "sections", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -97,6 +97,8 @@ ActiveRecord::Schema.define(version: 2021_02_28_185942) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "personal_okrs", "sections"
   add_foreign_key "section_okr_votes", "section_okrs"
   add_foreign_key "section_okr_votes", "users"
+  add_foreign_key "section_okrs", "sections"
 end
