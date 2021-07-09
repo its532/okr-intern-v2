@@ -6,13 +6,13 @@
   <% end %>
   <% @section_okrs.each do |section_okr| %>
     <ul>
-      <li><%= section_okr.section %> : <%= section_okr.objective %></li>
+      <li><%= section_okr.section.name %> : <%= section_okr.objective %></li>
     </ul>
   <% end %>
 
   <div class="form-group">
     <%= f.label :section_okr_id, "Section" %>
-    <%= f.select :section_okr_id, @section_okrs.all.map{|section_okr| [section_okr.section, section_okr.id]}, { selected: f.object.section_okr_id }, class: "form-control", required: true %>
+    <%= f.select :section_okr_id, @section_okrs.all.map{|section_okr| [section_okr.section.name, section_okr.id]}, { selected: f.object.section_okr_id }, class: "form-control", required: true %>
   </div>
 
   <div class="form-group">

@@ -7,7 +7,7 @@
     <ul>
       <h4><%= section_okr_vote.section_okr.year %> : <%= section_okr_vote.section_okr.quarter %></h4>
       <li>Name : <%= section_okr_vote.user.name %></li>
-      <li>Section : <%= section_okr_vote.section_okr.section %></li>
+      <li>Section : <%= section_okr_vote.section_okr.section.name %></li>
       <li>Objective : <%= section_okr_vote.section_okr.objective %></li>
       <li>コメント : <%= section_okr_vote.comment %></li>
       <%= link_to '編集', edit_section_okr_vote_path(section_okr_vote.id), class: "btn btn-success" %>
