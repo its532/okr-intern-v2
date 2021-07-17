@@ -1,5 +1,5 @@
 class SectionOkr < ApplicationRecord
-  has_many :key_results, as: :okr
+  has_many :key_results, as: :okr, dependent: :destroy
   has_many :section_okr_votes, dependent: :destroy
   has_many :users, through: :section_okr_votes
   belongs_to :section
